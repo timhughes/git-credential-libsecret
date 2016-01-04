@@ -20,6 +20,7 @@ if __name__ == '__main__':
 import sys
 import argparse
 from urllib.parse import urlparse
+from datetime import datetime
 import gi
 gi.require_version('Secret', '1')
 from gi.repository import Secret
@@ -31,6 +32,8 @@ GIT_CREDENTIALS_SCHEMA = Secret.Schema.new("org.timhughes.git.Credentials.",
             "host": Secret.SchemaAttributeType.STRING,
             "path": Secret.SchemaAttributeType.STRING,
             "username": Secret.SchemaAttributeType.STRING,
+            "application": Secret.SchemaAttributeType.STRING,
+            "last_updated": Secret.SchemaAttributeType.STRING,
             }
         )
 
@@ -56,7 +59,11 @@ def main(argv):
 
 
 def get_attributes():
-    attributes = {}
+    timestamp = "%d" % datetime.timestamp(datetime.now())
+    attributes = {
+            'application': 'git-credential-libsecret.py',
+            'last_updated': timestamp,
+            }
     for line in sys.stdin:
         key, var = line.partition("=")[::2]
         if key == "\n":
