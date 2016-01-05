@@ -46,8 +46,8 @@ def main(argv):
     parser_store = subparsers.add_parser('store', help='store shelp')
     parser_store.set_defaults(func=store)
 
-    parser_reject = subparsers.add_parser('reject', help='reject help')
-    parser_reject.set_defaults(func=reject)
+    parser_erase = subparsers.add_parser('erase', help='erase help')
+    parser_erase.set_defaults(func=erase)
     args = parser.parse_args(argv[1:])
     if hasattr(args, 'func'):
         try:
@@ -59,10 +59,8 @@ def main(argv):
 
 
 def get_attributes():
-    timestamp = "%d" % datetime.timestamp(datetime.now())
     attributes = {
             'application': 'git-credential-libsecret.py',
-            'last_updated': timestamp,
             }
     for line in sys.stdin:
         key, var = line.partition("=")[::2]
@@ -108,14 +106,13 @@ def get():
 
 
 def store():
-    attributes = get_attributes()
 
+    attributes = get_attributes()
     if 'password' in attributes:
         password = attributes['password']
         del attributes['password']
     else:
         sys.exit(1)
-
     Secret.password_store_sync(
             GIT_CREDENTIALS_SCHEMA,
             attributes,
@@ -126,7 +123,7 @@ def store():
             )
 
 
-def reject():
+def erase():
     attributes = get_attributes()
 
     if 'password' in attributes:
@@ -146,4 +143,5 @@ def find_secret_item(attributes):
     ret_attributes = item.get_attributes()
     ret_attributes['password'] = item.get_secret().get().decode('utf-8')
     return ret_attributes
+
 
