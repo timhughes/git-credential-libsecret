@@ -6,5 +6,5 @@ Handles storing and providing usernames and passwords to Git using libsecret.
 1. Add it as a helper to your ``~/.gitconfig``
   ```
   [credential]                                                                    
-     helper = /home/me/bin/git-credential-libsecret.py
+     helper = !git-credential-libsecret.py
   ```
