@@ -9,4 +9,4 @@ Handles storing and providing usernames and passwords to Git using libsecret.
      helper = !git-credential-libsecret.py
   ```
 
-If you are useing [pyenv](https://github.com/yyuu/pyenv) or [virtualenv](https://virtualenv.pypa.io/en/latest/) and getting `ImportError` then chahnge the hashbang (#!) at the top of the script to use your system python
+If you are useing [pyenv](https://github.com/yyuu/pyenv) or [virtualenv](https://virtualenv.pypa.io/en/latest/) and getting `ImportError` then change the hashbang (#!) at the top of the script to use your system python
