@@ -1,3 +1,5 @@
+ :exclamation: This is here in case others find the code useful. The standard gnome-keyring integration provided with git now works. Use `git-credential-gnome-keyring` instead of this.
+
 # git-credential-libsecret
 Handles storing and providing usernames and passwords to Git using libsecret.
 
