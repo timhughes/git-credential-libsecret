@@ -1,4 +1,4 @@
-:bangbang: This is here in case others find the code useful. The standard gnome-keyring integration provided with git now works. Use `git-credential-gnome-keyring` instead of this. :bangbang:
+ :no_entry_sign: This is here in case others find the code useful. The standard gnome-keyring integration provided with git now works. Use `git-credential-gnome-keyring` instead of this.  :no_entry_sign:
 
 # git-credential-libsecret
 Handles storing and providing usernames and passwords to Git using libsecret.
